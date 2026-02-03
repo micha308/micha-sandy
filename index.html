@@ -8,6 +8,9 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* FIX 1: voorkom horizontale overflow / witte strook rechts */
+    html, body { overflow-x: hidden; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: linear-gradient(180deg, #ffe6ee, #fff);
@@ -32,6 +35,9 @@
       align-items: center;
       gap: 12px;
       position: relative;
+
+      /* FIX 3: uitlijning hamburger/menu */
+      justify-content: space-between;
     }
 
     .brand{
@@ -43,7 +49,9 @@
     }
 
     .nav-toggle{
-      margin-left: auto;
+      /* FIX 3: niet meer "wegduwen" met auto-margin */
+      margin-left: 0;
+
       border: 0;
       background: transparent;
       font-size: 24px;
@@ -110,6 +118,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      /* FIX 2: betere uitsnede op mobiel onder sticky header */
+      object-position: center 25%;
+
       opacity: 0;
       animation: fadeIn 1.6s ease forwards;
     }
@@ -155,6 +167,14 @@
       color: #ff2f7a;
       font-weight: 900;
       letter-spacing: .15px;
+    }
+
+    /* FIX 4: badge rustiger op mobiel */
+    @media (max-width: 720px){
+      .hero-text .tagline{
+        padding: 8px 12px;
+        font-size: 0.95rem;
+      }
     }
 
     .container {
