@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Micha & Sandy ❤️</title>
 
   <style>
@@ -42,15 +42,8 @@
       text-align: center;
     }
 
-    .hero-text h1 {
-      font-size: 1.9rem;
-      margin-bottom: 10px;
-    }
-
-    .hero-text p {
-      font-size: 1.05rem;
-      color: #555;
-    }
+    .hero-text h1 { font-size: 1.9rem; margin-bottom: 10px; }
+    .hero-text p  { font-size: 1.05rem; color: #555; }
 
     .container {
       max-width: 720px;
@@ -144,11 +137,11 @@
       user-select: none;
     }
 
-    /* Verberg standaard pijltje (sommige browsers) */
     details.moment summary::-webkit-details-marker { display: none; }
 
-    .date { font-weight: 800; color: #ff2f7a; }
+    .date  { font-weight: 800; color: #ff2f7a; }
     .label { font-weight: 800; color: #222; }
+
     .chev {
       margin-left: auto;
       font-weight: 900;
@@ -162,6 +155,27 @@
       color: #555;
       line-height: 1.6;
       animation: fadeInUp 0.5s ease forwards;
+    }
+
+    /* Foto in moment (Noordwijk) */
+    .moment-photo {
+      margin-top: 12px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+      background: #fff;
+    }
+    .moment-photo img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+    .moment-photo .caption {
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      color: #666;
+      background: #fff;
     }
 
     /* Kaartje (responsive) */
@@ -197,16 +211,17 @@
 
     @media (min-width: 768px) {
       .hero-text h1 { font-size: 2.4rem; }
-      .hero-text p { font-size: 1.15rem; }
-      .map iframe { height: 260px; }
+      .hero-text p  { font-size: 1.15rem; }
+      .map iframe    { height: 260px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- FOTO -->
+  <!-- HERO FOTO -->
   <section class="hero">
+    <!-- Gebruik jouw bestaande hero-bestand. Als je liever micha_sandy.jpg wilt: vervang naar ./micha_sandy.jpg -->
     <img src="./20240223_144946.jpeg" alt="Micha & Sandy">
   </section>
 
@@ -259,18 +274,25 @@
           </div>
         </details>
 
-        <!-- Moment 2 (Noordwijk) + kaartje -->
+        <!-- Moment 2 (Noordwijk) + foto + kaartje -->
         <details class="moment">
           <summary>
             <span class="date">21-10-2023</span>
             <span class="label">🌊 1e weekendje weg — Noordwijk</span>
             <span class="chev">⌄</span>
           </summary>
+
           <div class="moment-body">
             Ons eerste weekend samen weg. Strand, zee, samen wakker worden — dit voelde zó goed en zó echt. 💞
 
+            <!-- JOUW FOTO VAN NOORDWIJK (geüpload als noordwijk.jpeg) -->
+            <div class="moment-photo">
+              <img src="./noordwijk.jpeg" alt="Noordwijk - ons eerste weekendje weg">
+              <div class="caption">Noordwijk 🌊 — 21 oktober 2023</div>
+            </div>
+
+            <!-- Kaartje Noordwijk -->
             <div class="map" aria-label="Kaart Noordwijk">
-              <!-- OpenStreetMap embed (geen API key nodig) -->
               <iframe
                 title="Noordwijk kaart"
                 loading="lazy"
@@ -280,7 +302,7 @@
             </div>
 
             <div class="map-note">
-              Tip: wil je ’m groter openen? 
+              Groter openen?
               <a href="https://www.openstreetmap.org/?mlat=52.239&mlon=4.448#map=14/52.239/4.448" target="_blank" rel="noopener">
                 Bekijk Noordwijk op de kaart
               </a>
@@ -306,8 +328,8 @@
   </main>
 
   <script>
-    // Samen-teller (simpel en leuk)
-    const start = new Date(2023, 7, 3); // 3 augustus 2023 (maand is 0-indexed)
+    // Samen-teller
+    const start = new Date(2023, 7, 3); // 3 augustus 2023 (maand 0-indexed)
     const now = new Date();
     const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
     const years = Math.floor(days / 365);
@@ -319,15 +341,13 @@
     // Verborgen bericht
     const btn = document.getElementById("openNote");
     const note = document.getElementById("note");
-
     btn.addEventListener("click", () => {
       const zichtbaar = note.style.display === "block";
       note.style.display = zichtbaar ? "none" : "block";
       btn.textContent = zichtbaar ? "💌 Open lief bericht" : "🙈 Verberg bericht";
     });
 
-    // (Optioneel) Alleen één moment tegelijk open laten:
-    // comment dit blok weg als je meerdere tegelijk open wilt.
+    // Alleen één moment tegelijk open laten (optioneel)
     const moments = document.querySelectorAll("details.moment");
     moments.forEach(m => {
       m.addEventListener("toggle", () => {
