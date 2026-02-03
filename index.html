@@ -8,10 +8,11 @@
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: linear-gradient(180deg, #ffe6ee, #fff);
       color: #222;
@@ -21,7 +22,7 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 60vh;
+      height: 65vh;
       min-height: 360px;
       overflow: hidden;
     }
@@ -31,7 +32,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      animation: fadeIn 1.6s ease forwards;
+      animation: fadeIn 1.8s ease forwards;
     }
 
     .hero::after {
@@ -41,7 +42,7 @@
       background: linear-gradient(
         to bottom,
         rgba(0,0,0,0.25),
-        rgba(0,0,0,0.55)
+        rgba(0,0,0,0.6)
       );
     }
 
@@ -51,44 +52,48 @@
       left: 16px;
       right: 16px;
       z-index: 2;
-      color: white;
-      animation: fadeInUp 1.8s ease forwards;
+      color: #fff;
+      animation: fadeInUp 2s ease forwards;
     }
 
     .hero-text h1 {
-      margin: 0 0 8px;
-      font-size: 1.9rem;
+      font-size: 2rem;
       line-height: 1.2;
+      margin-bottom: 8px;
     }
 
     .hero-text p {
-      margin: 0;
       font-size: 1.05rem;
       opacity: 0.95;
     }
 
     /* CONTENT */
     .container {
-      padding: 24px 16px 40px;
       max-width: 720px;
       margin: 0 auto;
+      padding: 28px 16px 48px;
       animation: fadeInUp 1.6s ease forwards;
     }
 
     .quote {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
       font-style: italic;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       margin-bottom: 24px;
     }
 
     .card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
     }
 
     /* ANIMATIONS */
@@ -101,7 +106,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(18px);
       }
       to {
         opacity: 1;
@@ -126,7 +131,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img src="micha_sandy.jpg" alt="Micha & Sandy">
+    <img src="./20240223_144946.jpg" alt="Micha & Sandy">
     <div class="hero-text">
       <h1>Welkom op onze eigen website, lieve schat 💖</h1>
       <p>Een klein romantisch plekje op het internet — alleen van ons.</p>
