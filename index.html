@@ -125,20 +125,32 @@
       animation: fadeIn 1.6s ease forwards;
     }
 
-    /* WIT BLOK ONDER FOTO */
+    /* ===== WELKOM BANNER (zoals je foto) ===== */
     .hero-text {
-      max-width: 720px;
-      margin: 24px auto 22px;
+      max-width: 860px;
+      margin: 26px auto 28px;
       background: #fff;
-      padding: 24px 26px;
-      border-radius: 20px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      padding: 34px 28px;
+      border-radius: 28px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.12);
       animation: fadeInUp 0.9s ease forwards;
       text-align: center;
     }
 
-    .hero-text h1 { font-size: 1.9rem; margin-bottom: 10px; }
-    .hero-text p  { font-size: 1.05rem; color: #555; }
+    .hero-text h1 {
+      font-size: 2.05rem;
+      font-weight: 950;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      letter-spacing: .2px;
+    }
+
+    .hero-text .subtitle{
+      font-size: 1.15rem;
+      color: #555;
+      line-height: 1.55;
+      font-weight: 500;
+    }
 
     .container {
       max-width: 720px;
@@ -367,9 +379,7 @@
       font-size: 0.95rem;
     }
 
-    .milestone-sub strong{
-      font-weight: 950;
-    }
+    .milestone-sub strong{ font-weight: 950; }
 
     @keyframes popIn {
       from { transform: translateY(10px) scale(0.98); opacity: 0; }
@@ -407,8 +417,9 @@
     }
 
     @media (min-width: 768px) {
-      .hero-text h1 { font-size: 2.4rem; }
-      .hero-text p  { font-size: 1.15rem; }
+      .hero-text h1 { font-size: 2.7rem; }
+      .hero-text .subtitle { font-size: 1.28rem; }
+
       .map iframe    { height: 260px; }
       .gallery { grid-template-columns: repeat(3, 1fr); }
       .gallery img { height: 180px; }
@@ -442,11 +453,13 @@
       <img src="./20240223_144946.jpeg" alt="Micha & Sandy">
     </section>
 
-    <!-- TEKST -->
+    <!-- WELKOM BANNER (zoals je screenshot) -->
     <section class="hero-text">
       <h1>Welkom op onze eigen website, lieve schat 💖</h1>
-      <p>Een klein romantisch plekje op het internet — alleen van ons.</p>
-      <p id="teller" style="margin-top:10px; font-weight:700;"></p>
+      <p class="subtitle">
+        Een klein romantisch plekje op het internet —<br>
+        alleen van ons.
+      </p>
     </section>
   </section>
 
@@ -543,7 +556,7 @@
             </div>
           </details>
 
-          <!-- Moment 3 (wordt door JS gedateerd als "vandaag") -->
+          <!-- Moment 3 -->
           <details class="moment">
             <summary>
               <span class="date" id="todayLabel">Vandaag</span>
@@ -571,10 +584,6 @@
         <div class="gallery">
           <img src="./20240223_144946.jpeg" alt="Micha & Sandy">
           <img src="./noordwijk.jpeg" alt="Noordwijk">
-          <!-- Voeg gerust extra foto's toe:
-          <img src="./foto3.jpg" alt="Moment 3">
-          <img src="./foto4.jpg" alt="Moment 4">
-          -->
         </div>
       </div>
     </section>
@@ -667,12 +676,8 @@
     const start = new Date(2023, 7, 3); // 03-08-2023 (maand 0-indexed)
     const today = startOfDay(new Date());
 
-    // ===== Teller bovenaan =====
+    // ===== Tekst in kaart =====
     const d = diffYMD(start, today);
-    document.getElementById("teller").textContent =
-      `Samen sinds ${formatNL(start)} • ${d.years} jaar, ${d.months} maanden en ${d.days} dagen samen ❤️`;
-
-    // ===== Extra lijn in kaart =====
     const togetherLine = document.getElementById("togetherLine");
     togetherLine.innerHTML =
       `Samen sinds <strong>${formatNL(start)}</strong><br>` +
