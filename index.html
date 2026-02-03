@@ -381,51 +381,6 @@
       animation: popIn 420ms ease forwards;
     }
 
-    /* ===== Jubilea overzicht ===== */
-    .jubilee {
-      margin-top: 14px;
-      text-align: left;
-      background: #fff6fa;
-      border: 1px solid rgba(255,77,141,0.22);
-      border-radius: 16px;
-      padding: 14px 14px;
-      line-height: 1.6;
-    }
-    .jubilee h3{
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-      color: #222;
-      text-align: center;
-    }
-    .jubilee ul{
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-    .jubilee li{
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 12px;
-      padding: 10px 12px;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: baseline;
-    }
-    .jubilee .tag{
-      font-weight: 900;
-      color: #ff2f7a;
-      white-space: nowrap;
-    }
-    .jubilee .when{
-      color: #555;
-      font-weight: 700;
-      text-align: right;
-    }
-
     /* ===== Fotogalerij ===== */
     .gallery{
       display: grid;
@@ -457,10 +412,6 @@
       .map iframe    { height: 260px; }
       .gallery { grid-template-columns: repeat(3, 1fr); }
       .gallery img { height: 180px; }
-
-      .jubilee ul{
-        grid-template-columns: 1fr 1fr;
-      }
     }
   </style>
 </head>
@@ -526,12 +477,6 @@
             </div>
             <div class="milestone-sub" id="milestoneSub">❤️</div>
           </div>
-        </div>
-
-        <!-- Overzicht: jaar-jubilea (1,2,3,4,...) -->
-        <div class="jubilee" aria-label="Jubilea overzicht">
-          <h3>🎯 Jubilea (exacte datums)</h3>
-          <ul id="jubileeList"></ul>
         </div>
 
         <button class="btn" id="openNote">💌 Open lief bericht</button>
@@ -656,7 +601,6 @@
       const m = d.getMonth();
       const day = d.getDate();
 
-      // naar 1e van maand om overflow issues te voorkomen
       const target = new Date(y, m + monthsToAdd, 1);
       const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
       target.setDate(Math.min(day, lastDay));
@@ -703,6 +647,7 @@
       let m = 0;
       let cursor = startOfDay(s);
       const end = startOfDay(e);
+
       while (true){
         const next = addMonths(cursor, 1);
         if (next <= end){
@@ -714,9 +659,7 @@
     }
 
     function formatHalfYear(monthsPassed){
-      // monthsPassed is veelvoud van 6
       const yearsFloat = monthsPassed / 12; // 0.5, 1.5, 2.5, ...
-      // netjes met komma
       return String(yearsFloat).replace(".", ",");
     }
 
@@ -735,7 +678,7 @@
       `Samen sinds <strong>${formatNL(start)}</strong><br>` +
       `Nu samen: <strong>${d.years} jaar</strong>, <strong>${d.months} maanden</strong> en <strong>${d.days} dagen</strong> ❤️`;
 
-    // ===== Exacte mijlpaal-melding (ALLEEN op exacte halfjaar/jaar) =====
+    // ===== Exacte mijlpaal-melding (ALLEEN op exacte jubileum-dag) =====
     const milestoneBanner = document.getElementById("milestoneBanner");
     const milestoneIcon = document.getElementById("milestoneIcon");
     const milestoneTitle = document.getElementById("milestoneTitle");
@@ -743,14 +686,14 @@
 
     const monthsPassed = monthsSinceStartExact(start, today);
 
-    // Exacte halfjaargrens: 6, 12, 18, 24, 30, 36... (dus 0,5 / 1 / 1,5 / 2 / 2,5 / 3 ...)
+    // Alleen tonen als het EXACT op een 6-maanden grens valt: 0,5 / 1 / 1,5 / 2 / 2,5 / 3 / 3,5 / 4 / 4,5 / ...
     const isExactHalfYearBoundary = (monthsPassed % 6 === 0) && (monthsPassed > 0);
 
     if (isExactHalfYearBoundary) {
       const milestoneDate = addMonths(startOfDay(start), monthsPassed);
 
       if (monthsPassed % 12 === 0) {
-        // Heel jaar: 1, 2, 3, 4, ...
+        // Heel jaar: 1, 2, 3, ...
         const years = monthsPassed / 12;
         milestoneIcon.textContent = "♥️";
         milestoneTitle.textContent = `Vandaag precies ${years} jaar samen!`;
@@ -758,9 +701,7 @@
           `Onze liefde groeit elk jaar. Samen sinds <strong>${formatNL(start)}</strong> ♥️`;
       } else {
         // Half jaar: 0,5 / 1,5 / 2,5 / 3,5 / 4,5 / ...
-        // Dit is precies wat je vroeg: 2,5 / 3,5 / 4,5 en oplopend (en ook eerder)
         const yearsTxt = formatHalfYear(monthsPassed);
-
         milestoneIcon.textContent = "🫶";
         milestoneTitle.textContent = `Vandaag precies ${yearsTxt} jaar samen!`;
         milestoneSub.innerHTML =
@@ -771,26 +712,6 @@
     } else {
       milestoneBanner.classList.remove("show");
     }
-
-    // ===== Overzicht: exacte datums van 1,2,3,4,... jaar samen =====
-    const jubileeList = document.getElementById("jubileeList");
-
-    function renderYearJubilees(maxYears = 20){
-      const items = [];
-      for (let y = 1; y <= maxYears; y++){
-        const dt = addYears(start, y);
-        const isToday = (dt.getTime() === today.getTime());
-        items.push({ y, dt, isToday });
-      }
-
-      jubileeList.innerHTML = items.map(it => {
-        const tag = `${it.y} jaar`;
-        const when = `${formatNL(it.dt)}${it.isToday ? " (vandaag!)" : ""}`;
-        return `<li><span class="tag">${tag}</span><span class="when">${when}</span></li>`;
-      }).join("");
-    }
-
-    renderYearJubilees(20);
 
     // ===== "Vandaag" label in tijdlijn zetten als echte datum =====
     document.getElementById("todayLabel").textContent = formatNL(today);
