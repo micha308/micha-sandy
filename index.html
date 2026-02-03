@@ -14,9 +14,9 @@
       color: #222;
     }
 
-    /* ===== NAV ===== */
     html { scroll-behavior: smooth; }
 
+    /* ===== NAV ===== */
     .site-header{
       position: sticky;
       top: 0;
@@ -33,36 +33,28 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      position: relative;
     }
 
     .brand{
       text-decoration: none;
       font-weight: 900;
       color: #222;
-      letter-spacing: .2px;
-      white-space: nowrap;
     }
 
     .nav-toggle{
       margin-left: auto;
-      border: 0;
-      background: transparent;
+      background: none;
+      border: none;
       font-size: 24px;
-      cursor: pointer;
-      padding: 6px 10px;
-      border-radius: 12px;
       display: none;
+      cursor: pointer;
     }
-
-    .nav-toggle:hover{ background: rgba(0,0,0,0.06); }
 
     .nav-links{
       list-style: none;
       display: flex;
       gap: 10px;
       margin-left: auto;
-      padding: 0;
     }
 
     .nav-links a{
@@ -71,11 +63,6 @@
       font-weight: 800;
       padding: 8px 10px;
       border-radius: 12px;
-      display: inline-block;
-    }
-
-    .nav-links a:hover{
-      background: rgba(0,0,0,0.06);
     }
 
     .nav-links a.active{
@@ -83,698 +70,214 @@
       color: #ff2f7a;
     }
 
-    /* Zorg dat anchors niet onder sticky header vallen */
-    .section { scroll-margin-top: 76px; }
-
     @media (max-width: 720px){
-      .nav-toggle{ display: inline-block; }
-
+      .nav-toggle{ display: block; }
       .nav-links{
         display: none;
         width: 100%;
-        margin-left: 0;
         flex-direction: column;
-        gap: 6px;
-        padding: 10px;
-        border-radius: 16px;
+        margin-top: 10px;
         background: #fff;
-        border: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+        border-radius: 16px;
+        padding: 10px;
       }
-
       .nav-links.open{ display: flex; }
-
-      .nav{
-        flex-wrap: wrap;
-      }
     }
 
-    /* HERO FOTO */
-    .hero {
-      width: 100%;
-      height: 65vh;
-      min-height: 360px;
-      overflow: hidden;
+    /* ===== HERO ===== */
+    .hero{
+      width:100%;
+      height:65vh;
+      min-height:360px;
+      overflow:hidden;
     }
 
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: fadeIn 1.6s ease forwards;
+    .hero img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      animation: fadeIn 1.5s forwards;
     }
 
-    /* WIT BLOK ONDER FOTO */
-    .hero-text {
-      max-width: 720px;
-      margin: 24px auto 22px;
-      background: #fff;
-      padding: 24px 26px;
-      border-radius: 20px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-      animation: fadeInUp 0.9s ease forwards;
-      text-align: center;
+    .hero-text{
+      max-width:720px;
+      margin:24px auto 22px;
+      background:#fff;
+      padding:24px;
+      border-radius:20px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.12);
+      text-align:center;
     }
 
-    .hero-text h1 { font-size: 1.9rem; margin-bottom: 10px; }
-    .hero-text p  { font-size: 1.05rem; color: #555; }
-
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 16px 56px;
+    .container{
+      max-width:720px;
+      margin:0 auto;
+      padding:0 16px 56px;
     }
 
-    .quote, .card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      margin-bottom: 18px;
-      text-align: center;
+    .card, .quote{
+      background:#fff;
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom:18px;
+      text-align:center;
     }
 
-    .card h2 { margin-bottom: 10px; }
-
-    /* VERBORGEN BERICHT */
-    .btn {
-      margin-top: 12px;
-      padding: 12px 16px;
-      border-radius: 14px;
-      border: none;
-      background: linear-gradient(135deg, #ff4d8d, #ff7ab2);
-      color: white;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
-    }
-
-    .hidden-note {
-      display: none;
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: 16px;
-      background: #fff6fa;
-      border: 1px solid rgba(255,77,141,0.25);
-      line-height: 1.6;
-      text-align: left;
-    }
-
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      padding-left: 22px;
-      text-align: left;
-      margin-top: 12px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 9px;
-      top: 6px;
-      bottom: 6px;
-      width: 2px;
-      background: linear-gradient(#ff4d8d, #ff7ab2);
-      border-radius: 99px;
-    }
-
-    /* Klikbare momenten met <details> */
-    details.moment {
-      position: relative;
-      margin-bottom: 14px;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-
-    details.moment::before {
-      content: "";
-      position: absolute;
-      left: -22px;
-      top: 18px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #ff4d8d;
-      box-shadow: 0 0 0 5px rgba(255,77,141,0.18);
-    }
-
-    details.moment summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 14px 14px 14px 16px;
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      user-select: none;
-    }
-
-    details.moment summary::-webkit-details-marker { display: none; }
-
-    .date  { font-weight: 800; color: #ff2f7a; }
-    .label { font-weight: 800; color: #222; }
-
-    .chev {
-      margin-left: auto;
-      font-weight: 900;
-      color: #777;
-      transition: transform 0.18s ease;
-    }
-    details.moment[open] .chev { transform: rotate(180deg); }
-
-    .moment-body {
-      padding: 0 14px 14px 16px;
-      color: #555;
-      line-height: 1.6;
-      animation: fadeInUp 0.5s ease forwards;
-    }
-
-    /* Foto in moment (Noordwijk) */
-    .moment-photo {
-      margin-top: 12px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
-      background: #fff;
-    }
-    .moment-photo img {
-      width: 100%;
-      display: block;
-      height: auto;
-    }
-    .moment-photo .caption {
-      padding: 10px 12px;
-      font-size: 0.95rem;
-      color: #666;
-      background: #fff;
-    }
-
-    /* Kaartje (responsive) */
-    .map {
-      margin-top: 12px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.08);
-    }
-    .map iframe {
-      width: 100%;
-      height: 220px;
-      border: 0;
-      display: block;
-    }
-    .map-note {
-      margin-top: 8px;
-      font-size: 0.95rem;
-      color: #666;
-    }
-    .map-note a {
-      color: #ff2f7a;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    /* ===== Mijlpaal banner (alleen zichtbaar op exacte datum) ===== */
-    .mini {
-      margin-top: 12px;
-      text-align: center;
-    }
+    /* ===== MIJLPAAL BANNER ===== */
+    .mini{ margin-top:12px; }
 
     .milestone-banner{
-      display: none;
-      margin-top: 10px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,77,141,0.20);
-      background: radial-gradient(120% 120% at 0% 0%, rgba(255,77,141,0.22), transparent 50%),
-              linear-gradient(135deg, #ff4d8d, #ff7ab2);
-      color: #fff;
-      box-shadow: 0 14px 34px rgba(255,77,141,0.25);
-      position: relative;
-      overflow: hidden;
+      display:none;
+      padding:14px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#ff4d8d,#ff7ab2);
+      color:#fff;
+      box-shadow:0 14px 34px rgba(255,77,141,0.25);
     }
 
-    .milestone-banner::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 35%),
-        radial-gradient(circle at 80% 35%, rgba(255,255,255,0.22), transparent 40%),
-        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.18), transparent 45%);
-      pointer-events:none;
-      opacity: 0.9;
-    }
+    .milestone-banner.show{ display:block; }
 
     .milestone-row{
       display:flex;
-      align-items:center;
       justify-content:center;
-      gap: 10px;
-      position: relative;
-      z-index: 1;
+      gap:10px;
+      align-items:center;
     }
 
     .milestone-icon{
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.22);
+      font-size:22px;
+    }
+
+    .timeline{ text-align:left; }
+
+    details.moment{
+      margin-bottom:12px;
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.06);
+    }
+
+    details.moment summary{
+      padding:14px;
+      cursor:pointer;
+      font-weight:800;
       display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size: 20px;
-      flex: 0 0 auto;
+      gap:10px;
     }
 
-    .milestone-title{
-      font-weight: 950;
-      letter-spacing: .2px;
-      font-size: 1.05rem;
-      line-height: 1.15;
-    }
-
-    .milestone-sub{
-      margin-top: 6px;
-      position: relative;
-      z-index: 1;
-      font-weight: 700;
-      opacity: 0.95;
-      font-size: 0.95rem;
-    }
-
-    .milestone-sub strong{
-      font-weight: 950;
-    }
-
-    @keyframes popIn {
-      from { transform: translateY(10px) scale(0.98); opacity: 0; }
-      to   { transform: translateY(0) scale(1); opacity: 1; }
-    }
-
-    .milestone-banner.show{
-      display:block;
-      animation: popIn 420ms ease forwards;
-    }
-
-    /* ===== Fotogalerij ===== */
     .gallery{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 10px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
     }
 
     .gallery img{
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
-      background: #fff;
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:14px;
     }
 
-    /* ANIMATIES */
-    @keyframes fadeIn { to { opacity: 1; } }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (min-width: 768px) {
-      .hero-text h1 { font-size: 2.4rem; }
-      .hero-text p  { font-size: 1.15rem; }
-      .map iframe    { height: 260px; }
-      .gallery { grid-template-columns: repeat(3, 1fr); }
-      .gallery img { height: 180px; }
-    }
+    @keyframes fadeIn{ to{ opacity:1; } }
   </style>
 </head>
 
 <body>
 
-  <!-- MENU -->
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="#home">Micha & Sandy ❤️</a>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="#home">Micha & Sandy ❤️</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#verhalen">Onze verhalen</a></li>
+      <li><a href="#fotos">Foto’s</a></li>
+    </ul>
+  </nav>
+</header>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false">
-        ☰
-      </button>
+<section id="home">
+  <div class="hero">
+    <img src="./20240223_144946.jpeg" alt="Micha & Sandy">
+  </div>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#verhalen">Onze verhalen</a></li>
-        <li><a href="#fotos">Fotogalerij</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="hero-text">
+    <h1>Welkom op onze eigen website, lieve schat 💖</h1>
+    <p>Een klein romantisch plekje op het internet — alleen van ons.</p>
+  </div>
+</section>
 
-  <!-- HOME -->
-  <section id="home" class="section">
-    <!-- HERO FOTO -->
-    <section class="hero">
-      <img src="./20240223_144946.jpeg" alt="Micha & Sandy">
-    </section>
+<main class="container">
 
-    <!-- TEKST -->
-    <section class="hero-text">
-      <h1>Welkom op onze eigen website, lieve schat 💖</h1>
-      <p>Een klein romantisch plekje op het internet — alleen van ons.</p>
-      <p id="teller" style="margin-top:10px; font-weight:700;"></p>
-    </section>
-  </section>
+<section id="verhalen">
+  <div class="quote">
+    “Jij bent mijn favoriete persoon. Vandaag, morgen en alle dagen daarna.” 💕
+  </div>
 
-  <main class="container">
+  <div class="card">
+    <h2>💞 Micha & Sandy</h2>
 
-    <!-- ONZE VERHALEN -->
-    <section id="verhalen" class="section">
+    <p id="togetherLine">
+      Samen sinds <strong>03-08-2023</strong>
+    </p>
 
-      <div class="quote">
-        “Jij bent mijn favoriete persoon. Vandaag, morgen, en alle dagen daarna.” 💕
-      </div>
-
-      <div class="card">
-        <h2>💞 Micha & Sandy</h2>
-
-        <p id="togetherLine" style="color:#555; line-height:1.6;">
-          Samen sinds <strong>03-08-2023</strong><br>
-        </p>
-
-        <!-- Alleen zichtbaar op de exacte dag van een halfjaar/jaar mijlpaal -->
-        <div class="mini">
-          <div id="milestoneBanner" class="milestone-banner" aria-live="polite">
-            <div class="milestone-row">
-              <div class="milestone-icon" id="milestoneIcon">🫶</div>
-              <div>
-                <div class="milestone-title" id="milestoneTitle">Vandaag precies …</div>
-              </div>
-            </div>
-            <div class="milestone-sub" id="milestoneSub">❤️</div>
-          </div>
+    <div class="mini">
+      <div id="milestoneBanner" class="milestone-banner">
+        <div class="milestone-row">
+          <span id="milestoneIcon" class="milestone-icon"></span>
+          <span id="milestoneTitle"></span>
         </div>
-
-        <button class="btn" id="openNote">💌 Open lief bericht</button>
-
-        <div class="hidden-note" id="note">
-          <strong>Lieve Schat,</strong><br><br>
-          Vandaag zijn we samen — en ik voel nog steeds hetzelfde als in het begin,
-          maar dan duizend keer sterker. Dankjewel voor je liefde, je geduld, je lach,
-          en voor alle mooie momenten samen.<br><br>
-          Ik kies jou. Vandaag. Morgen. En alle dagen die nog komen. ❤️<br><br>
-          <em>Liefs Micha</em>
-        </div>
+        <div id="milestoneSub"></div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- TIJDLIJN -->
-      <div class="card">
-        <h2>📅 Onze momenten</h2>
+<section id="fotos">
+  <div class="card">
+    <h2>📸 Fotogalerij</h2>
+    <div class="gallery">
+      <img src="./20240223_144946.jpeg">
+      <img src="./noordwijk.jpeg">
+    </div>
+  </div>
+</section>
 
-        <div class="timeline">
+</main>
 
-          <!-- Moment 1 -->
-          <details class="moment">
-            <summary>
-              <span class="date">03-08-2023</span>
-              <span class="label">💗 Het begin van ons</span>
-              <span class="chev">⌄</span>
-            </summary>
-            <div class="moment-body">
-              De dag dat ons verhaal begon. 🫶
-            </div>
-          </details>
+<script>
+  const start = new Date(2023,7,3);
+  const today = new Date(today = new Date().setHours(0,0,0,0));
 
-          <!-- Moment 2 (Noordwijk) + foto + kaartje -->
-          <details class="moment">
-            <summary>
-              <span class="date">21-10-2023</span>
-              <span class="label">🌊 1e weekendje weg — Noordwijk</span>
-              <span class="chev">⌄</span>
-            </summary>
+  function addMonths(d,m){ const n=new Date(d); n.setMonth(n.getMonth()+m); return n; }
 
-            <div class="moment-body">
-              Ons eerste weekend samen weg. Strand, zee, samen wakker worden — dit voelde zó goed en zó echt. 💞
+  function monthsPassed(s,e){
+    let m=0,c=s;
+    while(addMonths(c,1)<=e){ c=addMonths(c,1); m++; }
+    return m;
+  }
 
-              <div class="moment-photo">
-                <img src="./noordwijk.jpeg" alt="Noordwijk - ons eerste weekendje weg">
-                <div class="caption">Noordwijk 🌊 — 21 oktober 2023</div>
-              </div>
+  const mp = monthsPassed(start,today);
+  const banner = document.getElementById("milestoneBanner");
 
-              <div class="map" aria-label="Kaart Noordwijk">
-                <iframe
-                  title="Noordwijk kaart"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=4.392%2C52.210%2C4.465%2C52.256&layer=mapnik&marker=52.239%2C4.448">
-                </iframe>
-              </div>
-
-              <div class="map-note">
-                Groter openen?
-                <a href="https://www.openstreetmap.org/?mlat=52.239&mlon=4.448#map=14/52.239/4.448" target="_blank" rel="noopener">
-                  Bekijk Noordwijk op de kaart
-                </a>
-              </div>
-            </div>
-          </details>
-
-          <!-- Moment 3 (wordt door JS gedateerd als "vandaag") -->
-          <details class="moment">
-            <summary>
-              <span class="date" id="todayLabel">Vandaag</span>
-              <span class="label">🎉 Weer een dag dichter bij nog meer mooie herinneringen</span>
-              <span class="chev">⌄</span>
-            </summary>
-            <div class="moment-body" id="todayMomentBody">
-              En nog steeds elke dag dankbaar dat we samen zijn. ❤️
-            </div>
-          </details>
-
-        </div>
-      </div>
-
-    </section>
-
-    <!-- FOTOGALERIJ -->
-    <section id="fotos" class="section">
-      <div class="card">
-        <h2>📸 Fotogalerij</h2>
-        <p style="color:#555; line-height:1.6;">
-          Een paar van onze favoriete momenten samen. 💞
-        </p>
-
-        <div class="gallery">
-          <img src="./20240223_144946.jpeg" alt="Micha & Sandy">
-          <img src="./noordwijk.jpeg" alt="Noordwijk">
-          <!-- Voeg gerust extra foto's toe:
-          <img src="./foto3.jpg" alt="Moment 3">
-          <img src="./foto4.jpg" alt="Moment 4">
-          -->
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    // ===== Helpers: datums exact (kalender-precies) =====
-    const MS_PER_DAY = 24 * 60 * 60 * 1000;
-
-    function startOfDay(d) {
-      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-    }
-
-    function pad2(n){ return String(n).padStart(2, "0"); }
-
-    function formatNL(d) {
-      return `${pad2(d.getDate())}-${pad2(d.getMonth() + 1)}-${d.getFullYear()}`;
-    }
-
-    function sameDay(a, b){
-      return a.getFullYear() === b.getFullYear()
-        && a.getMonth() === b.getMonth()
-        && a.getDate() === b.getDate();
-    }
-
-    function addMonths(date, monthsToAdd){
-      const d = new Date(date.getTime());
-      const y = d.getFullYear();
-      const m = d.getMonth();
-      const day = d.getDate();
-
-      // naar 1e van maand om overflow issues te voorkomen
-      const target = new Date(y, m + monthsToAdd, 1);
-      const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
-      target.setDate(Math.min(day, lastDay));
-      return target;
-    }
-
-    function addYears(date, yearsToAdd){
-      const d = new Date(date.getTime());
-      const target = new Date(d.getFullYear() + yearsToAdd, d.getMonth(), 1);
-      const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
-      target.setDate(Math.min(d.getDate(), lastDay));
-      return target;
-    }
-
-    // Exacte kalender-diff: jaren/maanden/dagen
-    function diffYMD(start, end){
-      let s = startOfDay(start);
-      let e = startOfDay(end);
-
-      if (e < s) return { years: 0, months: 0, days: 0 };
-
-      let years = e.getFullYear() - s.getFullYear();
-      let anchor = addYears(s, years);
-      if (anchor > e){
-        years--;
-        anchor = addYears(s, years);
-      }
-
-      let months = e.getMonth() - anchor.getMonth();
-      if (months < 0) months += 12;
-
-      let anchor2 = addMonths(anchor, months);
-      if (anchor2 > e){
-        months--;
-        anchor2 = addMonths(anchor, months);
-      }
-
-      const days = Math.floor((e - anchor2) / MS_PER_DAY);
-      return { years, months, days };
-    }
-
-    // ===== Instellingen =====
-    const start = new Date(2023, 7, 3); // 03-08-2023 (maand 0-indexed)
-    const today = startOfDay(new Date());
-
-    // ===== Teller bovenaan =====
-    const d = diffYMD(start, today);
-    document.getElementById("teller").textContent =
-      `Samen sinds ${formatNL(start)} • ${d.years} jaar, ${d.months} maanden en ${d.days} dagen samen ❤️`;
-
-    // ===== Extra lijn in kaart =====
-    const togetherLine = document.getElementById("togetherLine");
-    togetherLine.innerHTML =
-      `Samen sinds <strong>${formatNL(start)}</strong><br>` +
-      `Nu samen: <strong>${d.years} jaar</strong>, <strong>${d.months} maanden</strong> en <strong>${d.days} dagen</strong> ❤️`;
-
-    // ===== Exacte mijlpaal-melding (ALLEEN op de exacte dag) =====
-    // We bepalen exact hoeveel volle maanden er voorbij zijn door telkens 1 maand op te tellen.
-    function monthsSinceStartExact(s, e){
-      let m = 0;
-      let cursor = s;
-      while (true){
-        const next = addMonths(cursor, 1);
-        if (next <= e){
-          m++;
-          cursor = next;
-        } else {
-          break;
-        }
-      }
-      return m;
-    }
-
-    const milestoneBanner = document.getElementById("milestoneBanner");
-    const milestoneIcon = document.getElementById("milestoneIcon");
-    const milestoneTitle = document.getElementById("milestoneTitle");
-    const milestoneSub = document.getElementById("milestoneSub");
-
-    const monthsPassed = monthsSinceStartExact(startOfDay(start), today);
-
-    // Alleen tonen als het EXACT op een 6-maanden grens valt: 0,5 / 1,0 / 1,5 / 2,0 / ...
-    const isExactHalfYearBoundary = (monthsPassed % 6 === 0) && (monthsPassed > 0);
-
-    if (isExactHalfYearBoundary) {
-      const milestoneDate = addMonths(startOfDay(start), monthsPassed);
-
-      if (monthsPassed % 12 === 0) {
-        // ♥️ Heel jaar (1, 2, 3, ...)
-        const years = monthsPassed / 12;
-
-        milestoneIcon.textContent = "♥️";
-        milestoneTitle.textContent = `Vandaag precies ${years} jaar samen!`;
-        milestoneSub.innerHTML =
-          `Een jaar vol liefde erbij. Samen sinds <strong>${formatNL(start)}</strong> ♥️`;
-
-      } else {
-        // 🫶 Half jaar (0,5 / 1,5 / 2,5 / ...)
-        const yearsFloat = monthsPassed / 12; // 0.5, 1.5, 2.5, ...
-        const yearsTxt = String(yearsFloat).replace(".", ",");
-
-        milestoneIcon.textContent = "🫶";
-        milestoneTitle.textContent = `Vandaag precies ${yearsTxt} jaar samen!`;
-        milestoneSub.innerHTML =
-          `Elke dag samen is bijzonder. <strong>${formatNL(milestoneDate)}</strong> 🫶`;
-      }
-
-      milestoneBanner.classList.add("show");
+  if(mp>0 && mp%6===0){
+    banner.classList.add("show");
+    if(mp%12===0){
+      document.getElementById("milestoneIcon").textContent="♥️";
+      document.getElementById("milestoneTitle").textContent=`Vandaag precies ${mp/12} jaar samen!`;
+      document.getElementById("milestoneSub").textContent="Een jaar liefde erbij ❤️";
     } else {
-      milestoneBanner.classList.remove("show");
+      document.getElementById("milestoneIcon").textContent="🫶";
+      document.getElementById("milestoneTitle").textContent=`Vandaag precies ${mp/12} jaar samen!`;
+      document.getElementById("milestoneSub").textContent="Samen is alles mooier 🫶";
     }
+  }
 
-    // ===== "Vandaag" label in tijdlijn zetten als echte datum =====
-    document.getElementById("todayLabel").textContent = formatNL(today);
-    document.getElementById("todayMomentBody").textContent =
-      `Vandaag (${formatNL(today)}) en nog steeds elke dag dankbaar dat we samen zijn. ❤️`;
-
-    // ===== Verborgen bericht =====
-    const btn = document.getElementById("openNote");
-    const note = document.getElementById("note");
-    btn.addEventListener("click", () => {
-      const zichtbaar = note.style.display === "block";
-      note.style.display = zichtbaar ? "none" : "block";
-      btn.textContent = zichtbaar ? "💌 Open lief bericht" : "🙈 Verberg bericht";
-    });
-
-    // ===== Alleen één moment tegelijk open laten (optioneel) =====
-    const moments = document.querySelectorAll("details.moment");
-    moments.forEach(m => {
-      m.addEventListener("toggle", () => {
-        if (m.open) {
-          moments.forEach(other => {
-            if (other !== m) other.open = false;
-          });
-        }
-      });
-    });
-
-    // ===== Menu toggle (mobiel) + actieve link highlight =====
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
-
-    navToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-
-    navLinks.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-
-    const sectionEls = ["home", "verhalen", "fotos"].map(id => document.getElementById(id));
-    const linkEls = Array.from(navLinks.querySelectorAll("a"));
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        linkEls.forEach(l => l.classList.remove("active"));
-        const active = linkEls.find(l => l.getAttribute("href") === `#${entry.target.id}`);
-        if (active) active.classList.add("active");
-      });
-    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
-
-    sectionEls.forEach(s => s && observer.observe(s));
-  </script>
+  const navToggle=document.getElementById("navToggle");
+  const navLinks=document.getElementById("navLinks");
+  navToggle.onclick=()=>navLinks.classList.toggle("open");
+</script>
 
 </body>
 </html>
