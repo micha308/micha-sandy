@@ -1,11 +1,142 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <title>Mijn website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micha & Sandy</title>
+
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: rgba(0,0,0,0.10);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Centered layout */
+    .wrap {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    .title {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.1rem);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0;
+    }
+
+    .btnrow {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: white;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background: #f2f2f2;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 420px) {
+      .card { padding: 16px; border-radius: 16px; }
+      .btn { width: 100%; justify-content: center; }
+    }
+
+    /* Optional fade-in */
+    .fade {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
-  <h1> ❤️Welkom op onze eigen website lieve Schat❤️</h1>
-  <p>Sandy & Micha voor altijd.</p>
+  <main class="wrap">
+    <section class="card fade">
+      <h1 class="title">💗 Welkom op onze eigen website lieve schat 💗</h1>
+      <p class="subtitle">Sandy & Micha — voor altijd.</p>
+
+      <div class="divider"></div>
+
+      <p>
+        Dit is onze kleine plek op het internet. Later kunnen we hier foto’s,
+        herinneringen en leuke pagina’s toevoegen 😊
+      </p>
+
+      <div class="btnrow">
+        <button class="btn" id="loveBtn">💌 Klik voor een bericht</button>
+        <a class="btn" href="https://micha308.github.io/">🏠 Terug naar hoofdsite</a>
+      </div>
+
+      <p id="msg" style="display:none; margin-top:14px; color: var(--muted);">
+        ❤️ Jij bent mijn favoriete persoon. Altijd. ❤️
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const btn = document.getElementById("loveBtn");
+    const msg = document.getElementById("msg");
+
+    btn.addEventListener("click", () => {
+      const zichtbaar = msg.style.display === "block";
+      msg.style.display = zichtbaar ? "none" : "block";
+      btn.textContent = zichtbaar ? "💌 Klik voor een bericht" : "🙈 Verberg bericht";
+    });
+  </script>
 </body>
 </html>
