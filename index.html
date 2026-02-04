@@ -33,7 +33,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      position: relative;
     }
 
     .brand{
@@ -52,14 +51,11 @@
       border-radius: 12px;
       display: none;
     }
-    .nav-toggle:hover{ background: rgba(0,0,0,0.06); }
 
     .nav-links{
       list-style: none;
       display: flex;
       gap: 10px;
-      margin-left: auto;
-      padding: 0;
     }
 
     .nav-links a{
@@ -68,10 +64,7 @@
       font-weight: 800;
       padding: 8px 10px;
       border-radius: 12px;
-      display: inline-block;
     }
-
-    .nav-links a:hover{ background: rgba(0,0,0,0.06); }
 
     .nav-links a.active{
       background: rgba(255,77,141,0.16);
@@ -80,20 +73,15 @@
 
     @media (max-width: 720px){
       .nav-toggle{ display: inline-block; }
-
       .nav-links{
         display: none;
         width: 100%;
-        margin-left: 0;
         flex-direction: column;
-        gap: 6px;
         padding: 10px;
-        border-radius: 16px;
         background: #fff;
-        border: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+        border-radius: 16px;
+        margin-top: 10px;
       }
-
       .nav-links.open{ display: flex; }
       .nav{ flex-wrap: wrap; }
     }
@@ -172,8 +160,6 @@
       color: #fff;
       font-weight: 800;
       text-decoration: none;
-      border: none;
-      cursor: pointer;
     }
 
     /* ===== GALLERY ===== */
@@ -191,26 +177,12 @@
       border-radius: 14px;
       box-shadow: 0 10px 22px rgba(0,0,0,0.10);
       background: #fff;
-      border: 1px solid rgba(0,0,0,0.08);
-      display:block;
     }
 
     @media (min-width: 768px) {
       .hero-text h1 { font-size: 2.7rem; }
       .gallery { grid-template-columns: repeat(3, 1fr); }
       .gallery img { height: 180px; }
-    }
-
-    /* ===== COMMENTS (Giscus wrapper) ===== */
-    .comments-wrap{
-      margin-top: 12px;
-      text-align: left;
-    }
-    .comments-note{
-      margin-top: 10px;
-      font-size: 0.92rem;
-      color: #666;
-      line-height: 1.45;
     }
   </style>
 </head>
@@ -220,7 +192,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="index.html">Micha & Sandy ❤️</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false">☰</button>
+    <button class="nav-toggle" id="navToggle">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a class="active" href="index.html">Home</a></li>
       <li><a href="verhalen.html">Onze verhalen</a></li>
@@ -246,40 +218,6 @@
     <a class="btn-link" href="verhalen.html">Ga naar Onze verhalen</a>
   </div>
 
-  <!-- ✅ ECHTE GEDEELDE COMMENTS -->
-  <div class="card">
-    <h2>💬 Onze comments</h2>
-    <p style="color:#555; line-height:1.6;">
-      Hier kunnen jullie allebei berichtjes plaatsen — en ze zijn altijd zichtbaar op elk toestel. 💞
-    </p>
-
-    <div class="comments-wrap">
-      <!-- GISCUS -->
-      <!-- 1) repo klopt waarschijnlijk al: micha308/micha-sandy -->
-      <!-- 2) VUL NOG IN: data-repo-id, data-category-id -->
-      <script src="https://giscus.app/client.js"
-        data-repo="micha308/micha-sandy"
-        data-repo-id="VUL_HIER_REPO_ID_IN"
-        data-category="General"
-        data-category-id="VUL_HIER_CATEGORY_ID_IN"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="nl"
-        crossorigin="anonymous"
-        async>
-      </script>
-
-      <div class="comments-note">
-        Als je hier nog “VUL_HIER…” ziet: haal de <strong>repo-id</strong> en <strong>category-id</strong> uit de Giscus setup en plak ze hier.
-        Daarna werkt het meteen.
-      </div>
-    </div>
-  </div>
-
   <div class="card">
     <h2>📸 Fotogalerij</h2>
 
@@ -295,20 +233,11 @@
 </main>
 
 <script>
-  // Mobiel menu toggle
   const navToggle = document.getElementById("navToggle");
   const navLinks = document.getElementById("navLinks");
 
   navToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  });
-
-  navLinks.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
+    navLinks.classList.toggle("open");
   });
 </script>
 
